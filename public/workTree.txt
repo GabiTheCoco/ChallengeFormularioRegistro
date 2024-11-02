@@ -1,0 +1,29 @@
+form-challenge/
+├── public/
+│   └── index.html               # Archivo HTML principal donde se monta la app de React
+├── src/
+│   ├── assets/                  # Archivos estáticos (imágenes, fuentes, etc.)
+│   ├── components/              # Componentes reutilizables de la aplicación
+│   │   ├── form/                # Componentes específicos del formulario
+│   │   │   ├── FormInput.tsx    # Componente reutilizable de entrada de formulario
+│   │   │   ├── SubmitButton.tsx # Componente reutilizable de botón de envío
+│   │   │   └── ResetButton.tsx  # Componente de restablecimiento
+│   │   └── Layout.tsx           # Componente de diseño de la aplicación
+│   ├── hooks/                   # Hooks personalizados
+│   │   └── useLocalStorage.ts   # Hook para persistir datos en localStorage
+│   ├── pages/                   # Vistas principales de la aplicación
+│   │   └── RegistrationForm.tsx # Página principal del formulario de registro
+│   ├── services/                # Servicios para lógica de negocio (API calls, validaciones)
+│   │   └── validationService.ts # Archivo con validaciones y métodos de ayuda para Yup
+│   ├── styles/                  # Archivos de estilos
+│   │   └── theme.ts             # Tema personalizado de Material UI
+│   ├── utils/                   # Utilidades y funciones auxiliares
+│   │   └── validators.ts        # Funciones de validación adicionales (ej. para edad, teléfono)
+│   ├── App.tsx                  # Componente principal de la aplicación
+│   ├── index.tsx                # Archivo de entrada de React (punto de arranque)
+│   └── types/                   # Tipos y definiciones de TypeScript
+│       └── formTypes.ts         # Tipos específicos para el formulario (interfaz del usuario)
+├── .gitignore                   # Archivos y carpetas que Git debe ignorar
+├── package.json                 # Dependencias y scripts de la aplicación
+├── README.md                    # Instrucciones de instalación y uso del proyecto
+└── tsconfig.json                # Configuración de TypeScript
