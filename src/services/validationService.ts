@@ -1,6 +1,5 @@
 import * as yup from "yup";
 import { formData } from "../types/FormTypes";
-import dayjs from "dayjs";
 
 const validationSchema: yup.ObjectSchema<formData> = yup.object({
   name: yup
@@ -22,21 +21,61 @@ const validationSchema: yup.ObjectSchema<formData> = yup.object({
     .required("La dirección es obligatoria")
     .min(10, "Debe contener 10 carácteres o más"),
   loanAmount: yup
-    .number()
-    .required("El monto del prestamo es obligatorio")
-    .min(25000, "El monto mínimo es de $25000")
-    .max(250000, "El monto máximo es de $250000"),
+    .string()
+    .required("El monto del préstamo es obligatorio")
+    .typeError("El monto debe ser un número válido")
+    .test(
+      "is-valid-number",
+      "El monto debe estar entre 25.000 y 250.000",
+      (value) => {
+        const cleanedValue = value.replace(/\./g, "").replace(",", ".");
+        const numericValue = parseFloat(cleanedValue);
+
+        if (value === undefined || isNaN(numericValue)) return false;
+        return numericValue >= 25000 && numericValue <= 250000;
+      }
+    ),
   dateOfBirth: yup
     .string()
     .required("La fecha de nacimiento es obligatoria")
-    .matches(/^\d{2}\/\d{2}\/\d{4}$/, "El formato debe ser dd/mm/yyyy")
+    .test("is-valid-date", "La fecha no es válida", (value) => {
+      if (!value) return false;
+      const date = new Date(value);
+      return !isNaN(date.getTime());
+    })
     .test("is-older-than-18", "Debe ser mayor de 18 años", (value) => {
-      return dayjs(value, "DD/MM/YYYY").isBefore(dayjs().subtract(18, "years"));
-    }),
+      if (!value) return false;
+      const date = new Date(value);
+      if (isNaN(date.getTime())) return false;
+
+      const today = new Date();
+      let age = today.getFullYear() - date.getFullYear();
+      const monthDiff = today.getMonth() - date.getMonth();
+      const dayDiff = today.getDate() - date.getDate();
+      if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+        age--;
+      }
+      return age >= 18;
+    })
+    .test(
+      "is-not-future-date",
+      "La fecha no puede ser en el futuro",
+      (value) => {
+        if (!value) return false;
+        const date = new Date(value);
+        if (isNaN(date.getTime())) return false;
+
+        const today = new Date();
+        return date <= today;
+      }
+    ),
   phoneNumber: yup
     .string()
     .required("El número de teléfono es obligatorio")
-    .matches(/^\(\d{3}\) \d{3}-\d{4}$/, "Debe tener el formato (XXX) XXX-XXXX"),
+    .matches(
+      /^\(\d{3}\) \d{3}-\d{4}$/,
+      "El número de teléfono debe tener el formato (xxx) xxx-xxxx"
+    ),
 });
 
 export default validationSchema;
