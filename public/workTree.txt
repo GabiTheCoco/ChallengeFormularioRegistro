@@ -1,20 +1,22 @@
 form-challenge/
-├─ public/
+├─ public/                          # Carpeta para almacenar archivos públicos (imagenes, svg, .txt, etc.)
 ├─ src/                             # Carpeta principal de la aplicación
-│   assets/                         # Carpeta para almacenar recursos como imágenes y archivos SVG
-│   └── remove-formatting.svg       # Icono de la app
-│    components/                     # Carpeta para componentes reutilizables de la interfaz
-│   ├── DatePickerInput.tsx         # Componente para seleccionar fechas
-│   ├── FormInput.tsx               # Componente genérico para campos de formulario
-│   ├── LoanAmountInput.tsx         # Componente para ingresar monto del préstamo
-│   ├── PhoneNumberInput.tsx        # Componente para ingresar número de teléfono
-│   └── dataCard.tsx                # Componente para mostrar datos en una tarjeta
-│   pages/                          # Carpeta para las diferentes páginas de la aplicación
-│   └── RegistrationForm.tsx        # Página para el formulario de registro
-│   services/                       # Carpeta para servicios como validación de datos
-│   └── validationService.ts        # Servicio que define la validación de datos con yup
-│   types/                          # Carpeta para definiciones de tipos TypeScript
-│   └── FormTypes.ts                # Archivo con tipos relacionados con los formularios
+│   assets/                             # Carpeta para almacenar recursos como imágenes y archivos SVG
+│   └── remove-formatting.svg               # Icono de la app
+│   components/                         # Carpeta para componentes reutilizables de la interfaz
+│   ├── DatePickerInput.tsx                 # Componente para seleccionar fechas
+│   ├── FormInput.tsx                       # Componente genérico para campos de formulario
+│   ├── LoanAmountInput.tsx                 # Componente para ingresar monto del préstamo
+│   ├── PhoneNumberInput.tsx                # Componente para ingresar número de teléfono
+│   └── dataCard.tsx                        # Componente para mostrar datos en una tarjeta
+│   pages/                              # Carpeta para las diferentes páginas de la aplicación
+│   └── RegistrationForm.tsx                # Página para el formulario de registro
+│   services/                           # Carpeta para servicios como validación de datos
+│   └── validationService.ts                # Servicio que define la validación de datos con yup
+│   styles/                             # Carpeta para estilos de la interfaz
+│   └── theme.ts                            # Tema que se aplica a la interfaz
+│   types/                              # Carpeta para definiciones de tipos TypeScript
+│   └── FormTypes.ts                        # Archivo con tipos relacionados con los formularios
 ├─ App.tsx                          # Componente principal de la aplicación
 ├─ main.tsx                         # Punto de entrada de la aplicación
 ├─ vite-env.d.ts                    # Definiciones de tipo para Vite
