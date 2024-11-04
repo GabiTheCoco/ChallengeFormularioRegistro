@@ -1,25 +1,37 @@
 import * as yup from "yup";
 import { formData } from "../types/FormTypes";
 
+// correos electronicos "ya registrados" para comprobar validaciones
+const registeredEmails = [
+  "ejemplo1@mail.com",
+  "ejepmlo2@mail.com",
+  "test@mail.com",
+];
+
+// esquema de validaciones con yup
 const validationSchema: yup.ObjectSchema<formData> = yup.object({
   name: yup
     .string()
     .required("El nombre es obligatorio")
     .min(2, "El nombre debe tener al menos 2 carácteres")
-    .matches(/[a-zA-Z]+$/, "El nombre solo debe contener letras"),
+    .matches(/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+(?: [a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+)*\s*$/, "Debe contener letras y espacios"),
   lastName: yup
     .string()
     .required("El apellido es obligatorio")
     .min(2, "El apellido debe tener al menos 2 carácteres")
-    .matches(/[a-zA-Z]+$/, "El nombre solo debe contener letras"),
+    .matches(/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+(?: [a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+)*\s*$/, "Debe contener letras y espacios"),
   email: yup
     .string()
     .required("El email es obligatorio")
-    .email("Debe ser un email válido"),
+    .email("Debe ser un email válido")
+    .test("is-unique", "El correo electrónico ya está registrado", (value) => {
+      return !registeredEmails.includes(value || "");
+    }),
   address: yup
     .string()
     .required("La dirección es obligatoria")
-    .min(10, "Debe contener 10 carácteres o más"),
+    .min(10, "Debe contener 10 carácteres o más")
+    .matches(/^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s,.-/#'()]+$/, "Debe contener letras, números, espacios y simbolos permitidos [,.-/#'())]"), 
   loanAmount: yup
     .string()
     .required("El monto del préstamo es obligatorio")

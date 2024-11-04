@@ -1,34 +1,66 @@
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid2";
+import format from "date-fns/format";
+import { Alert } from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
 
 interface DataCardProps {
   dataForm: Record<string, any>;
 }
 
-const DataCard = ({ dataForm } : DataCardProps) => {
+const DataCard = ({ dataForm }: DataCardProps) => {
   return (
-    <Box sx={{ minWidth: 275, marginTop: '20px' }}>
+    <Box sx={{ minWidth: 275, marginTop: "20px" }}>
+      <Alert icon={<CheckIcon fontSize="inherit" />} severity="success" sx={{ marginBottom: "20px" }}>
+        Formulario enviado con éxito!
+      </Alert>
       <Card variant="outlined">
         <CardContent>
           <Typography variant="h5" component="div">
             Detalles del Registro
           </Typography>
-          <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
-            Formulario Enviado
-          </Typography>
           <Grid container spacing={2} sx={{ mt: 2 }}>
-            {Object.entries(dataForm).map(([key, value]) => (
-              <Grid  size={{ xs: 12, sm: 6 }} key={key}>
-                <Typography variant="body2">
-                  <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}
-                </Typography>
-              </Grid>
-            ))}
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <Typography variant="body2" component="div">
+                <strong>Nombre: </strong> {dataForm.name}
+              </Typography>
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <Typography variant="body2" component="div">
+                <strong>Apellido: </strong> {dataForm.lastName}
+              </Typography>
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <Typography variant="body2" component="div">
+                <strong>Correo electrónico: </strong> {dataForm.email}
+              </Typography>
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <Typography variant="body2" component="div">
+                <strong>Número de teléfono: </strong> {dataForm.phoneNumber}
+              </Typography>
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <Typography variant="body2" component="div">
+                <strong>Dirección: </strong> {dataForm.address}
+              </Typography>
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <Typography variant="body2" component="div">
+                <strong>Fecha de nacimiento: </strong>
+                {dataForm.dateOfBirth
+                  ? format(new Date(dataForm.dateOfBirth), "dd/MM/yyyy")
+                  : "Fecha no disponible"}
+              </Typography>
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <Typography variant="body2" component="div">
+                <strong>Monto del préstamo: </strong> $ {dataForm.loanAmount}
+              </Typography>
+            </Grid>
           </Grid>
         </CardContent>
       </Card>

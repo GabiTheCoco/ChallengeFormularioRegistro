@@ -4,9 +4,6 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import RegistrationForm from './pages/RegistrationForm';
 import theme from './styles/theme'
 
-// import { useState } from 'react'
-// import './App.css'
-
 const App = () => {
   return(
     <LocalizationProvider dateAdapter={AdapterDateFns}>

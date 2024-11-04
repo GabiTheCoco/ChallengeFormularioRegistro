@@ -1,17 +1,20 @@
 import { InputAdornment, TextField } from "@mui/material";
 import { FieldError, UseFormRegisterReturn } from "react-hook-form";
 
+// propiedades que se le pasan al componente
 export type FormInputProps = {
     label: string
     type?: string
     register: UseFormRegisterReturn
     error?: FieldError
     adornment?: React.ReactNode
+    inputRef?: any
 }
 
 
-const FormInput = ({label, type="text", register, error, adornment}: FormInputProps) => {
+const FormInput = ({label, type="text", register, error, adornment, inputRef}: FormInputProps) => {
 
+    //si el input es del tipo numero, solo permite entrada de números
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (
             type === "number" && 
@@ -28,6 +31,7 @@ const FormInput = ({label, type="text", register, error, adornment}: FormInputPr
     };
 
     return (
+        // devuelve el input con todas sus propiedades definidas
         <TextField
             variant="outlined"
             label={label}
@@ -44,6 +48,7 @@ const FormInput = ({label, type="text", register, error, adornment}: FormInputPr
                   startAdornment: adornment ? <InputAdornment position="start">{adornment}</InputAdornment> : null
                 }
             }}
+            inputRef={inputRef}
         />
     )
 }

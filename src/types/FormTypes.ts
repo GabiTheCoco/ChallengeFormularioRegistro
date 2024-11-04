@@ -1,10 +1,10 @@
 
 export type formData = {
-    name: string
-    lastName: string
-    email: string
-    address: string
+    name: string | null
+    lastName: string | null
+    email: string | null
+    address: string | null
     dateOfBirth: Date | string | null
-    loanAmount: string
-    phoneNumber: string
+    loanAmount: string | null
+    phoneNumber: string | null
 };
