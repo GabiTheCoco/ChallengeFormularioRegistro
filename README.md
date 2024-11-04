@@ -1,50 +1,61 @@
-# React + TypeScript + Vite
+# Aplicación de Registro de Préstamos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+![alt text](https://raw.githubusercontent.com/GabiTheCoco/ChallengeFormularioRegistro/refs/heads/main/public/Formulario%20de%20pr%C3%A9stamo.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+Una aplicación en React.js y TypeScript que permite a los usuarios registrarse para un préstamo. La interfaz está construida con Material UI, y el formulario está validado utilizando Yup y React Hook Form.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tabla de Contenidos
 
-- Configure the top-level `parserOptions` property like this:
+- [Características](#características)
+- [Requisitos](#requisitos)
+- [Instalación](#instalación)
+- [Ejecutar la Aplicación](#ejecutar-la-aplicación)
+- [Scripts Disponibles](#scripts-disponibles)
+- [Informe de accesibilidad](#informe-de-accesibilidad)
+- [Despliegue](#despliegue)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Características
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Formulario de registro para la solicitud de préstamos.
+- Validación de formularios con Yup y React Hook Form.
+- Interfaz accesible y responsiva con Material UI.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Requisitos
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **[Node.js](https://nodejs.org/en/)** (versión recomendada: 16 o superior)
+- **[npm](https://www.npmjs.com/)** o **[yarn](https://yarnpkg.com/)** como gestor de paquetes
+- **[Visual studio Code](https://code.visualstudio.com/)** u algun otro editor de texto con herramientas integradas para ejecutar el proyecto
+
+## Instalación
+
+1. **Clonar el Repositorio**
+
+    ```bash
+   git clone https://github.com/GabiTheCoco/ChallengeFormularioRegistro.git
+
+2. **Instalar dependencias**
+    ```bash
+    npm install o yarn install
+
+## Ejecutar la Aplicación
+
+Para **inicar la aplicación** en modo de desarrollo, se debe correr el siguiente script en una consola integrada en un editor de texto u en otra consola mientras esté en la dirección de donde se guardó la app:
+
+    npm run dev o yarn dev
+
+La aplicación se abrirá por defecto en `http:localhost:5173`
+
+## Scripts disponibles
+
+* `npm run dev` / `yarn dev` : Inicia la aplicación en modo de desarrollo
+* `npm run build` / `yarn build` : Compila la aplicación para la producción en la carpeta `dist`
+
+## Informe de accesibilidad
+
+El informe de accesibiliad de este proyecto se encuentra en el siguiente link [**Informe Completo**](https://challengeformulario.netlify.app/)
+
+## Despliegue
+
+El proyecto actual se encuentra desplegado en la plataforma de Netlify en el siguiente link [**Challenge Formulario**](https://challengeformulario.netlify.app/)
