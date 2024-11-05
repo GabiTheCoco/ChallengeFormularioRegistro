@@ -54,7 +54,7 @@ La aplicación se abrirá por defecto en `http:localhost:5173`
 
 ## Informe de accesibilidad
 
-El informe de accesibiliad de este proyecto se encuentra en el siguiente link [**Informe Completo**](https://challengeformulario.netlify.app/)
+El informe de accesibiliad de este proyecto se encuentra en el siguiente link [**Informe Completo**](https://flossy-delivery-5ed.notion.site/Informe-de-accesibilidad-1343c444e15c804fb672debe7aa55d7a?pvs=74)
 
 ## Despliegue
 
